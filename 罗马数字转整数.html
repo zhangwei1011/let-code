@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>罗马数字转整数</title>
+</head>
+
+<body>
+    <script>
+        // 字符          数值
+        // I             1
+        // V             5
+        // X             10
+        // L             50
+        // C             100
+        // D             500
+        // M             1000
+        let romanObj = {
+            'I': 1,
+            'V': 5,
+            'X': 10,
+            'L': 50,
+            'C': 100,
+            'D': 500,
+            'M': 1000,
+            'IV': 4,
+            'IX': 9,
+            'XL': 40,
+            'XC': 90,
+            'CD': 400,
+            'CM': 900
+        };
+        var romanToInt = function (s) {
+            let total = 0;
+            let tempList = [];
+            if (s && s.length > 0) {
+                for (const key in romanObj) {
+                    if (key.length>1 && s.indexOf(key) != -1) {
+                        let curIndex = s.indexOf(key);
+                        console.log(curIndex);
+                        let tempIndex = 0;
+                        let tempStr = '';
+                        tempIndex = s.indexOf(key);
+                        // // 截取两个罗马数字组成的数字
+                        if (tempIndex) {
+                            tempStr = s.substr(tempIndex, 2); //params 第一个参数索引，第二参数长度
+                            console.log(tempStr);
+                            tempList.push(tempStr);
+                        };
+                        // console.log();
+                    }
+                };
+                // let s_str = s.split('');
+                // console.log(s_str);
+                // s_str.forEach(m => {
+                //     for (const key in romanList) {
+                //         if (m == key) {
+                //             total += romanList[key];
+                //         };
+                //     };
+                // });
+                return total;
+            } else {
+                return s;
+            }
+        };
+        let text = 'MCMXCIV';
+        let res = romanToInt(text);
+        // console.log(res);
+    </script>
+</body>
+
+</html>
